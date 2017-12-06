@@ -6,11 +6,12 @@ if(isset($_POST["alias"])) {
     $keyLength = 40;
     $iterations = 10000;
     $hash = openssl_pbkdf2($_POST["password"], $salt, $keyLength, $iterations, 'sha256');
-    $sql = "INSERT INTO users(alias, salt, hash) VALUES ('" . $alias . "', '" . $salt . "', '". $hash . "')";
+    $sql = "INSERT INTO users(alias, salt, hash) VALUES ('" . $conn->real_escape_string($alias) . "', '" . $conn->real_escape_string($salt) . "', '". $conn->real_escape_string($hash) . "')";
     
-    if(mysqli_multi_query($conn, $sql)) {
+    if($result = mysqli_multi_query($conn, $sql)) {
         echo "<script type='text/javascript'>location.href = 'index.php';</script>";
     } else {
+        var_dump($result);
         echo "Failed to register you! Your alias is likely taken. <br>";
         echo $alias . " - " . $salt . " - " .  $hash; 
     }
