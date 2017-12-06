@@ -1,9 +1,9 @@
 <?php
 
-$dbhost     = "127.0.0.1";
-$dbuser     = "root";
-$dbpassword = "";
-$database = "login";
+$dbhost     = "localhost";
+$dbuser     = "kristian-login";
+$dbpassword = "w7Gg*kj~;2B}HvGD";
+$database = "kristian_login";
 
 $conn=mysqli_connect($dbhost, $dbuser, $dbpassword, $database);
 
