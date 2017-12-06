@@ -1,7 +1,8 @@
 <?php
 function Register() {
 	include "../../register.php";
-	//doRegister();
+	if(doRegister())
+		Login();
 }
 function Login() {
 	include "../../login.php";

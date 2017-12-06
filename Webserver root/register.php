@@ -1,5 +1,13 @@
 <?php session_start();
 include "sql-cfg.php";
+function doRegister($username, $password) {
+
+
+    return false;
+}
+
+
+
 function generateSalt() {
 
 }
@@ -13,9 +21,10 @@ function checkIfUserExists() {
 }
 
 function insert_query($sql) {
-    
+
 }
 
+/*
 if(isset($_POST["alias"])) {
     $alias = $_POST["alias"];
     $salt = openssl_random_pseudo_bytes(64);
@@ -33,5 +42,5 @@ if(isset($_POST["alias"])) {
         echo "Failed to register you! Your alias is likely taken.";
     }
 }
-    
+  */  
 ?>
