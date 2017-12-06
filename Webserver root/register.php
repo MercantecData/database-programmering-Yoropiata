@@ -9,6 +9,10 @@ function hashPassword() {
 }
 
 function checkIfUserExists() {
+
+}
+
+function insert_query($sql) {
     
 }
 
