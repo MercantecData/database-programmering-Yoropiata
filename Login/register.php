@@ -14,8 +14,7 @@ if(isset($_POST["alias"])) {
         echo "<script type='text/javascript'>location.href = 'index.php';</script>";
     } else {
         var_dump($result);
-        echo "Failed to register you! Your alias is likely taken. <br>";
-        echo $alias . " - " . $salt . " - " .  $hash; 
+        echo "Failed to register you! Your alias is likely taken.";
     }
 } else {
     ?>
