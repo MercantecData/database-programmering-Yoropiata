@@ -9,16 +9,9 @@ Mit projekts website. (Ubuntu 17.10 - NGINX w/ php7.1)
 
 http://projects.qbowle.dk/Login
 
-Flyt Login folder ind i din Xampp (eller webserver) og diriger til den med http[s]://example.com/Login
+Flyt Login folder ind i din Xampp (eller webserver) og diriger til den med http://example.com/Login.
+eller som jeg g√•r ud fra at du (Mads) vil g√∏re det http://localhost/Login
 
-Importer Database:
-
-login_kristian.sql op imod din database.
-
-Hvis login credentials til din database ikke matcher:
-
-user: root
-
-pass: 
-
-SÂ b¯r du gÂ ind i SQL-conf.php som ligger i Login/SQL-conf og rette konfigurations filen sÂ den matcher dine behov.
+For at forberede din database til projektet skal du k√∏re disse to filer op imod din database.
+PrepareUser.sql //Laver bruger kristian-login p√• databasen som har alle permissions, kun tilg√•elig via localhost.
+CreateDatabase.sql //Laver database og tables. Inspicer efter behov ;)
