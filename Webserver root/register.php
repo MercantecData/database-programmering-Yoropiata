@@ -8,6 +8,10 @@ function hashPassword() {
 
 }
 
+function checkIfUserExists() {
+    
+}
+
 if(isset($_POST["alias"])) {
     $alias = $_POST["alias"];
     $salt = openssl_random_pseudo_bytes(64);
