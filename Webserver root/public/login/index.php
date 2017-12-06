@@ -1,11 +1,11 @@
 <?php
 function Register() {
-	include "../../register.php";
-	if(doRegister())
-		Login();
+	//include "../../register.php";
+	//if(doRegister())
+	//	Login();
 }
 function Login() {
-	include "../../login.php";
+	//include "../../login.php";
 }
 	if(isset($_GET["action"])) {
 		if($_GET["action"] === "register") {
@@ -43,7 +43,7 @@ function Login() {
 						<h1>Log in</h1> 
 						<p> 
 							<label for="username" class="uname" data-icon="u" > Your username </label>
-							<input id="username" name="username" required="required" type="text" placeholder="TheDonald"/>
+							<input id="username" name="username" required="required" type="text" placeholder="TheDonald" value="<?= $_POST["usernamesignup"] ?>"/>
 						</p>
 						<p> 
 							<label for="password" class="youpasswd" data-icon="p"> Your password </label>
