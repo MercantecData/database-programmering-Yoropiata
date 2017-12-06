@@ -2,11 +2,13 @@
 include "sql-cfg.php";
 if(isset($_POST["alias"])) {
     $alias = $_POST["alias"];
-    $salt = openssl_random_pseudo_bytes(12);
-    $keyLength = 40;
+    $salt = openssl_random_pseudo_bytes(64);
+    $salt = base64_encode($salt);
+    $keyLength = 64;
     $iterations = 10000;
     $hash = openssl_pbkdf2($_POST["password"], $salt, $keyLength, $iterations, 'sha256');
-    $sql = "INSERT INTO users(alias, salt, hash) VALUES ('" . $conn->real_escape_string($alias) . "', '" . $conn->real_escape_string($salt) . "', '". $conn->real_escape_string($hash) . "')";
+    $hash = base64_encode($hash);
+    $sql = "INSERT INTO users(alias, salt, hash) VALUES ('" . $conn->real_escape_string($alias) . "', '" . $salt . "', '". $hash . "')";
     
     if($result = mysqli_multi_query($conn, $sql)) {
         echo "<script type='text/javascript'>location.href = 'index.php';</script>";
