@@ -1,5 +1,13 @@
 <?php session_start();
 include "sql-cfg.php";
+function generateSalt() {
+
+}
+
+function hashPassword() {
+
+}
+
 if(isset($_POST["alias"])) {
     $alias = $_POST["alias"];
     $salt = openssl_random_pseudo_bytes(64);
@@ -16,18 +24,6 @@ if(isset($_POST["alias"])) {
         var_dump($result);
         echo "Failed to register you! Your alias is likely taken.";
     }
-} else {
-    ?>
-    <form action="./register.php" method="post">
-    Alias:<br>
-    <input type="text" name="alias" value="alias">
-    <br>
-    Password:<br>
-    <input type="password" name="password" value="pass">
-    <br><br>
-    <input type="submit" value="Register">
-  </form> 
-    <?php
 }
     
 ?>
