@@ -1,3 +1,20 @@
+<?php
+function Register() {
+	include "../../register.php";
+	//doRegister();
+}
+function Login() {
+	include "../../login.php";
+}
+	if(isset($_GET["action"])) {
+		if($_GET["action"] === "register") {
+			Register();
+		} else if($_GET["action"] === "login") {
+			Login();
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
@@ -8,7 +25,10 @@
         <meta charset="UTF-8" />
         <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
         <title>Login and Registration Form with HTML5 and CSS3</title>
-        <meta name="author" content="Codrops" />
+		<meta name="author" content="Codrops" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="js/passwordCompare.js"></script>
+		
         <link rel="stylesheet" type="text/css" href="css/loginform-style.css" />
     </head>
     <body>				
@@ -18,7 +38,7 @@
 			<a class="hiddenanchor" id="tologin"></a>
 			<div id="wrapper">
 				<div id="login" class="animate form">
-					<form  action="login.php" autocomplete="on" method="post"> 
+					<form id="login-form" action="./?action=login" autocomplete="on" method="post"> 
 						<h1>Log in</h1> 
 						<p> 
 							<label for="username" class="uname" data-icon="u" > Your username </label>
@@ -43,22 +63,22 @@
 				</div>
 
 				<div id="register" class="animate form">
-					<form  action="register.php" autocomplete="on" method="post"> 
+					<form id="register-form" action="./?action=register" autocomplete="on" method="post"> 
 						<h1> Sign up </h1> 
 						<p> 
 							<label for="usernamesignup" class="uname" data-icon="u">Your username</label>
 							<input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="TheDonald" />
 						</p>
 						<p> 
-							<label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
-							<input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. Covfefe@-123Sad"/>
+							<label for="passwordsignup" id="_register" class="youpasswd" data-icon="p">Your password </label>
+							<input id="passwordsignup" name="passwordsignup" required="required" onkeyup="CompareLogin();" type="password" placeholder="eg. Covfefe@-123Sad"/>
 						</p>
 						<p> 
-							<label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
-							<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. Covfefe@-123Sad"/>
+							<label for="passwordsignup_confirm" id="validate" class="youpasswd" data-icon="p">Please confirm your password </label>
+							<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" onkeyup="CompareLogin();" type="password" placeholder="eg. Covfefe@-123Sad"/>
 						</p>
 						<p class="signin button"> 
-							<input type="submit" value="Sign up"/> 
+							<input type="button" value="Sign up" onclick="return CompareLoginForSubmit()"/> 
 						</p>
 						<p class="change_link">  
 							Already a member ?
