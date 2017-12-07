@@ -1,13 +1,20 @@
 <?php
 function Register() {
-	//include "../../register.php";
-	//if(doRegister())
-	//	Login();
+	$username = $_POST["usernamesignup"];
+	$password = $_POST["passwordsignup"];
+	include "../../register.php";
+	if(doRegister($username, $password))
+		Login();
+	else
+		break;
 }
 function Login() {
-	//include "../../login.php";
+	include "../../login.php";
 }
+
+$username ="";
 	if(isset($_GET["action"])) {
+		$username = $_POST["usernamesignup"];
 		if($_GET["action"] === "register") {
 			Register();
 		} else if($_GET["action"] === "login") {
@@ -43,7 +50,7 @@ function Login() {
 						<h1>Log in</h1> 
 						<p> 
 							<label for="username" class="uname" data-icon="u" > Your username </label>
-							<input id="username" name="username" required="required" type="text" placeholder="TheDonald" value="<?= $_POST["usernamesignup"] ?>"/>
+							<input id="username" name="username" required="required" type="text" placeholder="TheDonald" value="<?= $username ?>"/>
 						</p>
 						<p> 
 							<label for="password" class="youpasswd" data-icon="p"> Your password </label>

@@ -2,7 +2,7 @@
 function CheckPostAndURI() {
     if(isset($_GET["action"]) && 
     isset($_POST["username"]) &&
-    isset($_POST["password"]) )) {
+    isset($_POST["password"]) ) {
         return true;
     }
     return false;

@@ -1,27 +1,39 @@
 <?php session_start();
 include "sql-cfg.php";
-function doRegister($username, $password) {
-
-
-    return false;
+function doRegister($username, $password) { // entry point.
+    $salt = generateSalt();
+    $hash = hashPassword($salt);
+    if(insert_query($username, $salt, $hash)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-
-
-function generateSalt() {
-
+function generateSalt($length = 64) {
+    $salt = openssl_random_pseudo_bytes($length);
+    return base64_encode($salt);
 }
 
-function hashPassword() {
-
+function hashPassword($salt, $keyLength = 64, $iterations = 10000) {
+    $keyLength = 64;
+    $iterations = 10000;
+    $hash = openssl_pbkdf2($_POST["password"], $salt, $keyLength, $iterations, 'sha256');
+    return base64_encode($hash);
 }
 
 function checkIfUserExists() {
-
+    
 }
 
-function insert_query($sql) {
-
+function insert_query($username, $salt, $hash) {
+    $sql = "INSERT INTO users(username, salt, hash) VALUES ('" . $conn->real_escape_string($username) . "', '" . $salt . "', '". $hash . "')";
+    $result = mysqli_multi_query($conn, $sql);
+    if($result) { //Successfully inserted!
+        return true;
+    } else { //Failed to insert!
+        return false;
+    }
 }
 
 /*
