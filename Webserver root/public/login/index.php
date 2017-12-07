@@ -36,6 +36,9 @@ function testPost() {
 		} else if($_GET["action"] === "login") {
 			
 			Login();
+		} else if ($_GET["action"] === "logout") {
+			session_unset();
+			session_destroy();
 		} else {
 			return;
 		}
@@ -114,6 +117,7 @@ testPost();
 							Already a member ?
 							<a href="#tologin" class="to_register"> Go and log in </a>
 						</p>
+						<input id="signupsubmit" type="submit" style="display: none;" />
 					</form>
 				</div>
 				

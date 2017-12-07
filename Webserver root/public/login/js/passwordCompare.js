@@ -6,10 +6,9 @@ function CompareLogin() {
     }
 }
 function CompareLoginForSubmit() {
-    if ($('#passwordsignup').val() == $('#passwordsignup_confirm').val()) {
-        $('#register-form').submit();
-    } else {
+    if (!($('#passwordsignup').val() == $('#passwordsignup_confirm').val())) {
         var html = "Your password - Error: Passwords do not match!";
         $('#_register').html(html).css('color', 'red');
     }
+    $('#signupsubmit').click();
 }
