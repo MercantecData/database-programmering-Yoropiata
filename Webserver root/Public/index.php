@@ -6,8 +6,9 @@ include "../sql-cfg.php";
 if(isset($_POST["status_posttext"])) {
     $sql = "INSERT INTO status(text, user_id) VALUES ('" . mysqli_real_escape_string($conn, $_POST["status_posttext"]) . "', '" . $_SESSION["id"] . "')";
     $result = mysqli_multi_query($conn, $sql);
+    echo '<script type="text/javascript">window.location.href="./";</script>';
 }
-$sql = "SELECT status.text, users.username FROM status INNER JOIN users ON status.user_id = users.id ORDER BY status.modified DESC;";
+$sql = "SELECT status.created, status.text, users.username FROM status INNER JOIN users ON status.user_id = users.id ORDER BY status.modified DESC;";
 $statusQuery = $conn->query($sql);
 
 ?>
@@ -37,9 +38,10 @@ $statusQuery = $conn->query($sql);
                 </form>          
             </div>
             <div id="content">
-                <?php while($row = mysqli_fetch_array($statusQuery)) { ?>
+                <?php while($row = mysqli_fetch_array($statusQuery)) { //Posts all of the status updates. ?>
+                
                 <div class="status">
-                    <h4> <?= $row["username"]; ?> </h4>
+                    <h4> <?= $row["username"]; ?> - <?= $row["created"]; ?> </h4>
                     <a> <?= $row["text"]; ?></a>                    
                 </div>
 
