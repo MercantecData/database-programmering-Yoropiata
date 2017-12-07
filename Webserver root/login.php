@@ -1,10 +1,16 @@
 <?php
-function doRegister($username, $password) { // entry point.
-    $salt = generateSalt();
-    $hash = hashPassword($salt, $password);
-    if(insert_query($username, $salt, $hash)) {
-        return true;
+function doLogin($username, $password) { // entry point.
+    if($userdata = getUserData($username)) {
+        if($userdata["hash"] == hashPassword($userdata["salt"], $password)) {
+            //Success
+            return true;
+        } else {
+            //incorrect password.
+            return false;
+        }
+        
     } else {
+        //UserDoesn'tExist
         return false;
     }
 }
@@ -13,7 +19,8 @@ function getUserData($username) {
     include "sql-cfg.php";    
     $sql = "SELECT id, username, salt, hash FROM users WHERE username='" . $username . "';";
     $userQuery = $conn->query($sql);
-    echo $userQuery["id"][0];
+    $userData = mysqli_fetch_array($userQuery);
+    return $userData;
 }
 
 function hashPassword($salt, $password, $keyLength = 64, $iterations = 10000) {
@@ -24,25 +31,8 @@ function hashPassword($salt, $password, $keyLength = 64, $iterations = 10000) {
     return $hash;
 }
 
-function checkIfUserExists() {
+function UserExists() {
 
 }
 
-function insert_query($username, $salt, $hash) {
-    include "sql-cfg.php";
-    $sql = "INSERT INTO users(username, salt, hash) VALUES ('" . mysqli_real_escape_string($conn, $username) . "', '" . $salt . "', '". $hash . "')";
-    $result = mysqli_multi_query($conn, $sql);
-    if($result) { //Successfully inserted!
-        return true;
-    } else { //Failed to insert!
-        return false;
-    }
-}
-
-if(isset($_POST["alias"])) {
-    
-    while($row = mysqli_fetch_assoc($userQuery)) {
-        echo 'user: ' . $row["alias"] . ' - Pass:' . $row["password"] . '<br>';
-    }
-}
 ?>

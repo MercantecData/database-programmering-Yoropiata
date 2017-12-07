@@ -3,13 +3,25 @@ function Register() {
 	$username = $_POST["usernamesignup"];
 	$password = $_POST["passwordsignup"];
 	include "../../register.php";
-	if(doRegister($username, $password))
-		Login();
-	else
+	if(doRegister($username, $password)) {
 		return;
+		// Success
+	} else {
+		return;
+		// Error
+	}
 }
 function Login() {
+	$username = $_POST["username"];
+	$password = $_POST["password"];
 	include "../../login.php";
+	if(doLogin($username, $password)) {
+		echo '<script type="text/javascript">window.location.href="../";</script>';
+		//success
+	} else {
+		return;
+		// error
+	}
 }
 function testPost() {
 	if(isset($_GET["action"])) {
@@ -20,6 +32,7 @@ function testPost() {
 		if($_GET["action"] === "register") {
 			Register();
 		} else if($_GET["action"] === "login") {
+			
 			Login();
 		} else {
 			return;
