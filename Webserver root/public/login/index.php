@@ -1,4 +1,5 @@
-<?php
+<?php session_start();
+
 function Register() {
 	$username = $_POST["usernamesignup"];
 	$password = $_POST["passwordsignup"];
@@ -16,6 +17,7 @@ function Login() {
 	$password = $_POST["password"];
 	include "../../login.php";
 	if(doLogin($username, $password)) {
+		$_SESSION["username"] = $username;
 		echo '<script type="text/javascript">window.location.href="../";</script>';
 		//success
 	} else {

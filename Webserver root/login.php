@@ -1,8 +1,10 @@
 <?php
+
 function doLogin($username, $password) { // entry point.
     if($userdata = getUserData($username)) {
         if($userdata["hash"] == hashPassword($userdata["salt"], $password)) {
             //Success
+            $_SESSION["id"] = $userdata["id"];
             return true;
         } else {
             //incorrect password.
