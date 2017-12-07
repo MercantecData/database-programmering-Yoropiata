@@ -1,0 +1,35 @@
+body {
+    /* Jeg har ikke lavet baggrunden selv. Dog har jeg rettet farven til så den er bootyful. */
+    margin: 0px;
+	background-color: #84a7cf;
+    background-image:
+    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    linear-gradient(60deg, rgba(51, 52, 122, 0.1) 25%, transparent 25%, transparent 75%, rgba(51, 52, 122, 0.1) 75%, rgba(51, 52, 122, 0.1)),
+    linear-gradient(120deg, rgba(51, 52, 122, 0.1) 25%, transparent 25%, transparent 75%, rgba(51, 52, 122, 0.1) 75%, rgba(51, 52, 122, 0.1));
+    background-size: 70px 120px;
+	font-family: 'Archivo Black', sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 10px;
+    background-color: transparent;
+    color: #444;
+}
+
+.subGrid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, auto);
+}
+
+.box {
+    background-color: #444;
+    color: #fff;
+    border: 2px black;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+}

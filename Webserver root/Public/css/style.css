@@ -1,0 +1,111 @@
+body {
+    /* Jeg har ikke lavet baggrunden selv. Dog har jeg rettet farven til så den er bootyful. */
+	background-color: #84a7cf;
+    background-image:
+    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    linear-gradient(60deg, rgba(51, 52, 122, 0.1) 25%, transparent 25%, transparent 75%, rgba(51, 52, 122, 0.1) 75%, rgba(51, 52, 122, 0.1)),
+    linear-gradient(120deg, rgba(51, 52, 122, 0.1) 25%, transparent 25%, transparent 75%, rgba(51, 52, 122, 0.1) 75%, rgba(51, 52, 122, 0.1));
+    background-size: 70px 120px;
+	font-family: 'Archivo Black', sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 35% 35% 20%;
+    background-color: transparent;
+    color: #444;
+}
+
+.box {
+    background-color: rgba(46, 46, 46, 1);
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+}
+
+#title {
+    grid-column: 1 / span 2;
+}
+#navbar {
+    grid-column: 3 ;
+    grid-row: 1 / span 2;
+}
+#navbar a {
+    color: white;
+    size: 5em;
+}
+#content {
+    display: grid;
+    grid-column: 1 / span 2;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    grid-row: 2;
+    grid-gap: 10px;
+    z-index: 1;
+    grid-auto-columns: 50%;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+#content .feed {
+    background-color: rgb(255, 255, 255);
+    color: rgb(65, 65, 65);
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+}
+
+
+table {
+    border-collapse: collapse;
+}
+/*
+ * COPY PASTE FRA W3 Schools + lidt customization 2 make it look gut.
+ */
+.dropbtn {
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 43px;
+    padding-right: 43px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.Tasks_Table tr:nth-child(even) .dropbtn{background-color: rgba(96, 154, 255, 0.5);}
+.Tasks_Table tr:nth-child(odd) .dropbtn{background-color: rgba(45, 85, 160, 0.5);}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #eeeeee;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(31, 49, 63, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: rgb(231, 140, 36)}
+/* REPLACE HOVER WITH ON CLICK JS */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgb(119, 122, 255);
+}
