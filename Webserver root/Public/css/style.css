@@ -37,7 +37,7 @@ body {
     color: white;
     size: 5em;
 }
-#content {
+#status_post {
     display: grid;
     grid-column: 1 / span 2;
     padding: 10px;
@@ -49,8 +49,20 @@ body {
     border-radius: 5px;
     justify-content: center;
 }
+#content {
+    display: grid;
+    grid-column: 1 / span 2;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    grid-row: 3;
+    grid-gap: 10px;
+    z-index: 1;
+    grid-auto-columns: 50%;
+    border-radius: 5px;
+    justify-content: center;
+}
 
-#content .feed {
+#content .status {
     background-color: rgb(255, 255, 255);
     color: rgb(65, 65, 65);
     border-radius: 5px;
