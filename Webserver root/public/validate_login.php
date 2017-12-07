@@ -26,16 +26,15 @@ function isRegister() {
     } 
 }
 
-function 
-
-
 $action = $_GET["action"];
 if($action === "Login") {
     $username = $_POST["username"];
     $password = $_POST["password"];
     if (isset($_POST["remember"])) {
         $remember = $_POST["remember"];
-        if($remember)
+        if($remember) {
+            Action();
+        }
     }
     include "../login.php";
     if(ValidLogin()) {

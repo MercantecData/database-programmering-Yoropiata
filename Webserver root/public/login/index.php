@@ -6,21 +6,28 @@ function Register() {
 	if(doRegister($username, $password))
 		Login();
 	else
-		break;
+		return;
 }
 function Login() {
 	include "../../login.php";
 }
-
-$username ="";
+function testPost() {
 	if(isset($_GET["action"])) {
-		$username = $_POST["usernamesignup"];
+		if(isset($_POST["usernamesignup"])) {
+			$username = $_POST["usernamesignup"];
+		}
+
 		if($_GET["action"] === "register") {
 			Register();
 		} else if($_GET["action"] === "login") {
 			Login();
+		} else {
+			return;
 		}
 	}
+}
+$username ="";
+testPost();
 ?>
 
 <!DOCTYPE html>
