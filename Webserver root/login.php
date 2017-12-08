@@ -12,7 +12,7 @@ function doLogin($username, $password) { // entry point.
         }
         
     } else {
-        //UserDoesn'tExist
+        //User Doesn't Exist
         return false;
     }
 }

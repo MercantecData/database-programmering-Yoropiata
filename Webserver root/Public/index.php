@@ -39,13 +39,11 @@ $statusQuery = $conn->query($sql);
             </div>
             <div id="content">
                 <?php while($row = mysqli_fetch_array($statusQuery)) { //Posts all of the status updates. ?>
-                
-                <div class="status">
-                    <h4> <?= $row["username"]; ?> - <?= $row["created"]; ?> </h4>
-                    <hr>
-                    <a> <?= $row["text"]; ?></a>                    
-                </div>
-
+                        <div class="status">
+                            <h4> <?= $row["username"]; ?> - <?= $row["created"]; ?> </h4>
+                            <hr>
+                            <a> <?= $row["text"]; ?></a>                    
+                        </div>
                 <?php } ?>
             </div>
         </div>
