@@ -42,6 +42,7 @@ $statusQuery = $conn->query($sql);
                 
                 <div class="status">
                     <h4> <?= $row["username"]; ?> - <?= $row["created"]; ?> </h4>
+                    <hr>
                     <a> <?= $row["text"]; ?></a>                    
                 </div>
 
