@@ -1,9 +1,9 @@
 <?php
 
 $dbhost     = "localhost";
-$dbuser     = "kristian-login";
-$dbpassword = "@-vhxV6ws=mBrGKq";
-$database = "kristian_login";
+$dbuser     = "Qbowle";
+$dbpassword = "lOXEQObIX623nA5aQuBa8uL1Wani57";
+$database = "qbowle";
 
 $conn=mysqli_connect($dbhost, $dbuser, $dbpassword, $database);
 

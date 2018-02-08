@@ -1,7 +1,5 @@
 <?php session_start();
-if(!(isset($_SESSION["username"]) && $_SESSION["id"])) {
-    echo '<script type="text/javascript">window.location.href="./login";</script>';
-}
+include "../validate_login.php";
 include "../sql-cfg.php";
 if(isset($_POST["status_posttext"])) {
     $sql = "INSERT INTO status(text, user_id) VALUES ('" . mysqli_real_escape_string($conn, $_POST["status_posttext"]) . "', '" . $_SESSION["id"] . "')";
@@ -28,6 +26,7 @@ $statusQuery = $conn->query($sql);
             </div>
             <div class="box" id="navbar">
                 <input type="button" onclick='window.location.href="./login?action=logout"' value="logout"> <br>
+                <input type="button" value="Request API-Key"> <br>
                 <a href="users.php">Users</a> <br>
                 <a href="friends.php">Friends</a> <br>
             </div>

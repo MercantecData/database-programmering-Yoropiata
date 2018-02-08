@@ -4,7 +4,9 @@ function Register() {
 	$username = $_POST["usernamesignup"];
 	$password = $_POST["passwordsignup"];
 	include "../../register.php";
-	if(doRegister($username, $password)) {
+	$register = new Register();
+	if($register->User($username, $password)) {
+	//if(doRegister($username, $password)) {
 		return;
 		// Success
 	} else {
@@ -16,7 +18,8 @@ function Login() {
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 	include "../../login.php";
-	if(doLogin($username, $password)) {
+	$login = new Login();
+	if($login->Verify($username, $password)) {
 		$_SESSION["username"] = $username;
 		echo '<script type="text/javascript">window.location.href="../";</script>';
 		//success
