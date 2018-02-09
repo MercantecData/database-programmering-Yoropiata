@@ -6,10 +6,10 @@ if(isset($_GET["userID"])) {
     }
     try {
         include "../../../sql-cfg.php";
-        $sql = "SELECT API_KEY FROM users WHERE id = $userID";
+        $sql = "SELECT key FROM api_key_user WHERE id = $userID AND NOT disabled = 1";
         $query = $conn->query($sql);
         $results = mysqli_fetch_array($query);
-        if($results["API_KEY"] == "") {
+        if($results["key"] == "") {
             echo "You don't have an API Key...";
             die();
         }
