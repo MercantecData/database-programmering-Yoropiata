@@ -26,7 +26,8 @@ $statusQuery = $conn->query($sql);
             </div>
             <div class="box" id="navbar">
                 <input type="button" onclick='window.location.href="./login?action=logout"' value="logout"> <br>
-                <input type="button" value="Request API-Key"> <br>
+                <input type="button" id="requestAPIkey" data-uid="<?= $_SESSION["id"] ?>" value="Request new API-Key"> <br>
+                <span style="background-color:white"><a style="color: black" id="APIKey">No API-Key for user.</a></span> <br>
                 <a href="users.php">Users</a> <br>
                 <a href="friends.php">Friends</a> <br>
             </div>
