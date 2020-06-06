@@ -1,5 +1,5 @@
 # datProg
-Kristian Lind Kristensen
+Anon 🤩
 
 Projekt Beskrivelse.
 
